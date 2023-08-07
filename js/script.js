@@ -3,12 +3,17 @@ $(document).ready(function(){
 
     $('#div-quantidade').text(soma);
 
-    $('#span-valor-total').text(soma.toFixed(2));
-    $('#span-valor-total').mask("#.##0,00", {reverse: true});
-    $('#span-valor-total').trigger('input');
+    inserirValorTotal(soma);
 });
 
-$("input:checkbox").on('click', function(){
+function inserirValorTotal(valor)
+{
+    $('#span-valor-total').text(valor.toFixed(2));
+    $('#span-valor-total').mask("#.##0,00", {reverse: true});
+    $('#span-valor-total').trigger('input');
+}
+
+$("input").click(function(){
     calcularQuantidadeSelecionada($(this));
     calcularValorSelecionado($(this));
 });
@@ -17,7 +22,7 @@ function calcularQuantidadeSelecionada(element)
 {
     let quantidade = $('#div-quantidade').text();
 
-    if($(element).prop('checked'))
+    if($(element).is(':checked'))
         quantidade++;
     else
         quantidade--;
@@ -40,14 +45,12 @@ function calcularValorSelecionado(element)
 
     let resultadoValor = 0;
 
-    if($(element).prop('checked'))
+    if($(element).is(':checked'))
         resultadoValor = parseFloat(valorTotal) + parseFloat(valorSelecionado);
     else
         resultadoValor = parseFloat(valorTotal) - parseFloat(valorSelecionado);
 
-    $('#span-valor-total').text(resultadoValor.toFixed(2));
-    $('#span-valor-total').mask("#.##0,00", {reverse: true});
-    $('#span-valor-total').trigger('input');
+    inserirValorTotal(resultadoValor);
 }
 
 function substituirVirgulaPorPonto(valor)
@@ -62,6 +65,12 @@ function substituirVirgulaPorPonto(valor)
 }
 
 $("button").click(function(){
-    let tr = $(this).parent().parent();
-    $(tr).remove();
+    let linha = $(this).parent().parent();
+
+    let inputCheckbox = linha.find('td:first').find('input:first');
+
+    if($(inputCheckbox).is(':checked'))
+        $(inputCheckbox).click();
+
+    $(linha).remove();
 });
