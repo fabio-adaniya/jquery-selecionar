@@ -1,5 +1,10 @@
 <h1 align="center">jquery-selecionar</h1>
 
+<h3 align="center">Sobre</h3>
+<div align="center">
+    Aplicação desenvolvida para simular um contador de quantidade e valor, tendo como objetivo utilizar o jQuery para atualizar o contador ao marcar ou desmarcar um item.
+</div>
+
 <h3 align="center">Tecnologias utilizadas</h3>
 
 <div display="inline" align="center">
@@ -14,4 +19,10 @@
     <a href="https://fabio-adaniya.github.io/jquery-selecionar/">
         <strong>https://fabio-adaniya.github.io/jquery-selecionar/</strong>
     </a>
+</div>
+
+<br>
+
+<div align="center">
+    <img src= "/img/tela.PNG">
 </div>
